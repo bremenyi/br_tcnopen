@@ -1,0 +1,32 @@
+diff -purN tcnopen-2162-orig/config/LINUX_BR_config tcnopen-2162/config/LINUX_BR_config
+--- tcnopen-2162-orig/config/LINUX_BR_config	1970-01-01 01:00:00.000000000 +0100
++++ tcnopen-2162/config/LINUX_BR_config	2020-04-17 15:34:53.864371978 +0200
+@@ -0,0 +1,28 @@
++#//
++#//
++#// DESCRIPTION    Config file for Buildroot integration 
++#//
++#// AUTHOR         Bombardier Transportation GmbH (Bernhard Remenyi)
++#//
++#// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0 
++#// If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/
++#// Copyright Bombardier Transportation Inc. or its subsidiaries and others, 2014. All rights reserved.
++#//
++
++# verbose description for the target
++# ARCH controls the output path for the binaries
++ARCH = br
++CPU =
++TARGET_VOS = posix
++TARGET_OS = LINUX
++
++CFLAGS += -Wall -DPOSIX -D_GNU_SOURCE 
++
++ifeq ($(TCNOPEN_ENDIAN),LITTLE)
++CFLAGS+=-DL_ENDIAN
++else
++CFAGS+=-DB_ENDIAN
++endif
++
++CFLAGS += -DHAS_UUID -fPIC
++LDFLAGS += -lrt -luuid -pthread

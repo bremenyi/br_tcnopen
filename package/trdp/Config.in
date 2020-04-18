@@ -1,0 +1,29 @@
+config BR2_PACKAGE_TRDP
+	bool "TRDP Library"
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	depends on BR2_INSTALL_LIBSTDCPP
+	select BR2_PACKAGE_UTIL_LINUX
+	select BR2_PACKAGE_UTIL_LINUX_LIBUUID
+	help
+	  TRDP Library
+
+#RMY prepared for separate build of TRDP/ TCNopen / Test Application
+#if BR2_PACKAGE_XXXX
+#
+#config BR2_PACKAGE_XXXX_CLIENT
+#	bool "XXXXclient"
+#	default y
+#	help
+#	  XXXX client
+#
+#config BR2_PACKAGE_XXXX_SERVER
+#	bool "XXXX-Server"
+#	help
+#	  XXXX server
+#
+#endif
+
+comment "TRDP needs a toolchain w/ C++, threads, dynamic library"
+	depends on BR2_USE_MMU
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_TOOLCHAIN_HAS_THREADS \
+		|| BR2_STATIC_LIBS

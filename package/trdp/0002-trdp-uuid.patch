@@ -1,0 +1,24 @@
+diff -purN /home/bremenyi/br_rasp4_64/trdp-2.0.0.1/Makefile trdp-2.0.0.1/Makefile
+--- /home/bremenyi/br_rasp4_64/trdp-2.0.0.1/Makefile	2020-03-03 11:28:52.636000000 +0100
++++ trdp-2.0.0.1/Makefile	2020-03-03 13:09:37.532000000 +0100
+@@ -239,7 +239,7 @@ $(OUTDIR2)/libtrdp_d.a:	$(addprefix $(OU
+ ###############################################################################       
+ $(OUTDIR2)/trdp_d:  $(OUTDIR2)/libtrdp_d.a
+ 			@echo ' ### Building TRDP Daemon $(@F)'
+-			$(CC) sourcecode/trdp_daemon.c -DMULTIPROC -L$(OUTDIR2) $(CFLAGS) $(INCLUDES) -o $@ -ltrdp_d -lrt -lpthread
++			$(CC) sourcecode/trdp_daemon.c -DMULTIPROC -L$(OUTDIR2) $(CFLAGS) $(INCLUDES) -o $@ -ltrdp_d -lrt -lpthread -luuid
+ 			$(STRIP) $@
+         
+ ###############################################################################
+diff -purN /home/bremenyi/br_rasp4_64/trdp-2.0.0.1/tcnopen-trdp/2.0.2.0/src/vos/posix/vos_thread.c trdp-2.0.0.1/tcnopen-trdp/2.0.2.0/src/vos/posix/vos_thread.c
+--- /home/bremenyi/br_rasp4_64/trdp-2.0.0.1/tcnopen-trdp/2.0.2.0/src/vos/posix/vos_thread.c	2020-03-03 11:28:52.888000000 +0100
++++ trdp-2.0.0.1/tcnopen-trdp/2.0.2.0/src/vos/posix/vos_thread.c	2020-03-03 13:05:31.928000000 +0100
+@@ -58,7 +58,7 @@
+ #ifdef __APPLE__
+ #include <uuid/uuid.h>
+ #else
+-#include <uuid.h>
++#include <uuid/uuid.h>
+ #endif
+ #else
+ #include "vos_sock.h"

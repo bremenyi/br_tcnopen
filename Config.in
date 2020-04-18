@@ -1,0 +1,4 @@
+source "$BR2_EXTERNAL_TRDP_TEST_PATH/package/trdp/Config.in"
+source "$BR2_EXTERNAL_TRDP_TEST_PATH/package/trdp_conftst/Config.in"
+source "$BR2_EXTERNAL_TRDP_TEST_PATH/package/tcnopen/Config.in"
+source "$BR2_EXTERNAL_TRDP_TEST_PATH/package/nt_conftest/Config.in"

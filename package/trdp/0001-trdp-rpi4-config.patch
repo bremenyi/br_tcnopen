@@ -1,0 +1,89 @@
+diff -purN trdp-2.0.0.1/config/LINUX_RPI4_config trdp-bt/config/LINUX_RPI4_config
+--- trdp-2.0.0.1/config/LINUX_RPI4_config	1970-01-01 01:00:00.000000000 +0100
++++ trdp-bt/config/LINUX_RPI4_config	2020-03-02 14:01:53.000000000 +0100
+@@ -0,0 +1,40 @@
++#//
++#// $Id: LINUX_PPC_config 4446 2019-12-05 09:30:04Z sbender $
++#//
++#// DESCRIPTION    Config file to make TRDP for LINUX_PPC target
++#//
++#// AUTHOR         Bombardier Transportation GmbH
++#//
++#// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0 
++#// If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/
++#// Copyright Bombardier Transportation Inc. or its subsidiaries and others, 2014. All rights reserved.
++#//
++
++# path to compiler incl. the trailing slash
++#TCPATH = /home/bremenyi/compiler/aarch64-bt-linux-gnu_sdk-buildroot/bin/
++
++# verbose description for the target
++# ARCH controls the output path for the binaries
++ARCH = rpi4-linux-gnu
++CPU =
++TARGET_VOS = posix
++TARGET_OS = LINUX
++
++# the required cross compile prefix incl. the dash
++TCPREFIX = aarch64-bt-linux-gnu-
++
++TCPOSTFIX =
++DOXYPATH = /usr/local/bin/
++
++# path to sysroot includes also the trailing slash
++CFLAGS += -Wall -DPOSIX -D_GNU_SOURCE -DL_ENDIAN
++
++CFLAGS += -DHAS_UUID -fPIC
++
++#INCPATH += -I /usr/include/uuid
++
++LDFLAGS += -lrt -luuid -pthread
++
++#LINT section  
++LINT_SYSINCLUDE_DIRECTIVES = -D__linux -D__GNUC__ -i "./src/vos/posix" -i "/scm/gbe/repository/sysroot/nrtos/2.4.0.1/sysroot/usr/include" -i "/scm/gbe/repository/sysroot/nrtos/2.4.0.1/sysroot/usr/include/linux" -i "/opt/cross/freescale-2010.09/lib/gcc/powerpc-linux-gnu/4.5.1/include" +libdir "/scm/gbe/repository/sysroot/nrtos/2.4.0.1/sysroot/usr/include" -wlib 0 
++
+diff -purN trdp-2.0.0.1/tcnopen-trdp/2.0.2.0/config/LINUX_RPI4_config trdp-bt/tcnopen-trdp/2.0.2.0/config/LINUX_RPI4_config
+--- trdp-2.0.0.1/tcnopen-trdp/2.0.2.0/config/LINUX_RPI4_config	1970-01-01 01:00:00.000000000 +0100
++++ trdp-bt/tcnopen-trdp/2.0.2.0/config/LINUX_RPI4_config	2020-03-02 14:01:39.000000000 +0100
+@@ -0,0 +1,41 @@
++#//
++#// $Id: LINUX_PPC_config 4446 2019-12-05 09:30:04Z sbender $
++#//
++#// DESCRIPTION    Config file to make TRDP for LINUX_PPC target
++#//
++#// AUTHOR         Bombardier Transportation GmbH
++#//
++#// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0 
++#// If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/
++#// Copyright Bombardier Transportation Inc. or its subsidiaries and others, 2014. All rights reserved.
++#//
++
++# path to compiler incl. the trailing slash
++#TCPATH = /home/bremenyi/compiler/aarch64-bt-linux-gnu_sdk-buildroot/bin/
++
++# verbose description for the target
++# ARCH controls the output path for the binaries
++ARCH = rpi4-linux-gnu
++CPU =
++TARGET_VOS = posix
++TARGET_OS = LINUX
++
++# the required cross compile prefix incl. the dash
++TCPREFIX = aarch64-bt-linux-gnu-
++
++TCPOSTFIX =
++DOXYPATH = /usr/local/bin/
++
++# path to sysroot includes also the trailing slash
++CFLAGS += -Wall -DPOSIX -D_GNU_SOURCE -DL_ENDIAN 
++
++CFLAGS += -DHAS_UUID
++
++#INCPATH += -I /usr/include/uuid
++
++LDFLAGS += -lrt -luuid -lpthread
++#LDFLAGS += -lrt
++
++#LINT section  
++LINT_SYSINCLUDE_DIRECTIVES = -D__linux -D__GNUC__ -i "./src/vos/posix" -i "/scm/gbe/repository/sysroot/nrtos/2.4.0.1/sysroot/usr/include" -i "/scm/gbe/repository/sysroot/nrtos/2.4.0.1/sysroot/usr/include/linux" -i "/opt/cross/freescale-2010.09/lib/gcc/powerpc-linux-gnu/4.5.1/include" +libdir "/scm/gbe/repository/sysroot/nrtos/2.4.0.1/sysroot/usr/include" -wlib 0 
++

@@ -1,0 +1,39 @@
+diff -purN tcnopen-2104-orig/Makefile tcnopen-2104/Makefile
+--- tcnopen-2104-orig/Makefile	2020-04-17 11:18:42.128935357 +0200
++++ tcnopen-2104/Makefile	2020-04-16 12:10:06.894708204 +0200
+@@ -20,7 +20,7 @@
+ #//	BL 2017-05-08: 64 bit OSX config added
+ #//	BL 2016-02-11: Ticket #88 Cleanup makefiles, remove dependencies on external libraries
+ 
+-MAKEFLAGS += --quiet
++#MAKEFLAGS += --quiet
+ 
+ #// Support for POSIX and VXWORKS, set buildsettings and config first!
+  .EXPORT_ALL_VARIABLES:
+@@ -537,11 +537,21 @@ doc/latex/refman.pdf: Doxyfile trdp_if_l
+ # install complete library
+ #
+ ###############################################################################
+-ifdef INSTALLDIR
+-install:
+-	@$(MD) ../$(INSTALLDIR)
+-	cp $(OUTDIR)/libtrdpap.a ../$(INSTALLDIR)/libtrdpap.a
+-endif
++#ifdef INSTALLDIR
++#install:
++#	@$(MD) ../$(INSTALLDIR)
++#	cp $(OUTDIR)/libtrdpap.a ../$(INSTALLDIR)/libtrdpap.a
++#endif
++install-libs:
++	@$(ECHO) "INSTALL TCNopen Libraries" >&2
++
++install: install-libs
++	-@if [ ! -d $(DESTDIR)/usr/include/trdp   ]; then mkdir -p $(DESTDIR)/usr/include/trdp; fi
++	rm -f $(DESTDIR)/usr/include/trdp/*
++	@cp $(SRCDIR)src/api/*.h $(DESTDIR)/usr/include/trdp/
++	@cp $(SRCDIR)src/vos/api/*.h $(DESTDIR)/usr/include/trdp/
++	@cp $(OUTDIR)/libtrdp.a $(DESTDIR)/usr/lib/
++	chmod 644 $(DESTDIR)/usr/include/trdp/*
+ 
+ ###############################################################################
+ #
