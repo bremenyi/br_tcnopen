@@ -1,12 +1,12 @@
-# Buildroot for TRDP Tests
-[Buildroot](https://buildroot.org) based embedded [Linux](https://www.kernel.org) OS for TRDP Tests.
+# Buildroot for TCNopen
+[Buildroot](https://buildroot.org) based embedded [Linux](https://www.kernel.org) OS for TCNopen.
 There are configurations for the Raspberry Pi 4 / 64 enabled.
 
 ## How-to
  1. [Download](https://buildroot.org/download.html) or [clone](https://github.com/buildroot/buildroot) [Buildroot](https://buildroot.org) 
     Buildroot >= buildroot-20200219 is required
- 2. Download Buildroot-External for TRDP Test
- 3. Navigate into Buildroot's root directory and define trdp_test as an [external](https://buildroot.org/downloads/manual/manual.html#outside-br-custom):
+ 2. Download Buildroot-External for TCNopen to br_tcnopen
+ 3. Navigate into Buildroot's root directory and define br_tcnopen as an [external](https://buildroot.org/downloads/manual/manual.html#outside-br-custom):
 ```
 buildroot$ make BR2_EXTERNAL=/PATH/TO/trdp_test/buildroot-external/ trdp_conftest_rpi4_defconfig
 ```
