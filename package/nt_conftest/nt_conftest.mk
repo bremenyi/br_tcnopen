@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-NT_CONFTEST_VERSION = v1.00
+NT_CONFTEST_VERSION = v1.01
 #NT_CONFTEST_VERSION = bd11ea06c52cb93555d362310cdbe54a6476256a
 #NT_CONFTEST_SITE = file:///opt/tcms/repository/ots_sources
 NT_CONFTEST_SITE_METHOD = git
